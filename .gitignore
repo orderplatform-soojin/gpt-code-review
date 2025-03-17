@@ -4,7 +4,7 @@ package-lock.json
 yarn.lock
 
 # Build
-dist/
+# dist/ dist 폴더는 실행을 위해 포함되어야 함
 build/
 *.tsbuildinfo
 
