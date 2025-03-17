@@ -14,7 +14,8 @@ RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pn
 COPY package.json pnpm-lock.yaml ./
 
 # pnpm 설치 후 종속성 설치
-RUN corepack enable && pnpm install --frozen-lockfile
+RUN ls -al
+RUN pnpm install --frozen-lockfile
 
 ENV NODE_ENV="production"
 COPY . .
