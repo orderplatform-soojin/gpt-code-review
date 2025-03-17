@@ -10,6 +10,12 @@ ENV PATH $PNPM_HOME:$PATH
 RUN apk add --no-cache libc6-compat
 RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
 
+# package.json과 pnpm-lock.yaml을 먼저 복사
+COPY package.json pnpm-lock.yaml ./
+
+# pnpm 설치 후 종속성 설치
+RUN corepack enable && pnpm install --frozen-lockfile
+
 RUN pnpm install
 ENV NODE_ENV="production"
 COPY . .
