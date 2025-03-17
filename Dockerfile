@@ -16,7 +16,6 @@ COPY package.json pnpm-lock.yaml ./
 # pnpm 설치 후 종속성 설치
 RUN corepack enable && pnpm install --frozen-lockfile
 
-RUN pnpm install
 ENV NODE_ENV="production"
 COPY . .
 CMD [ "pnpm", "start" ]
