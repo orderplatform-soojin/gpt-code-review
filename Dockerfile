@@ -13,10 +13,6 @@ RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pn
 # package.json과 pnpm-lock.yaml을 먼저 복사
 COPY package.json pnpm-lock.yaml ./
 
-# pnpm 설치 후 종속성 설치
-RUN ls -al
-RUN pnpm install --frozen-lockfile
-
 ENV NODE_ENV="production"
 COPY . .
 CMD [ "pnpm", "start" ]
